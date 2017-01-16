@@ -1,0 +1,14 @@
+{
+  "name": "dataxylo",
+  "version": "1.0.0",
+  "description": "designing photo gallery",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kamlesh Uikey",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
