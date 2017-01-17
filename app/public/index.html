@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="galary">
+<html ng-app="gallery">
 <head>
 	<title>Gallery App </title>
 	<meta charset="utf-8">
@@ -19,7 +19,7 @@
 	<script type="text/javascript" src="./assets/fileupload.js"></script>
 	<script src="./assets/app.js"></script>
 </head>
-<body ng-controller="gallaryController">
+<body ng-controller="galleryController">
 <!-- top margin -->
 <div class="margin-t-large"></div>
 
@@ -44,7 +44,7 @@
 
 <!-- preview for photo's -->
 <div class="margin-t-large"></div>
-<div class="gallary">
+<div class="gallery">
 	<div class="photo-container" ng-repeat='img in data | filter : searchKey'>
 		<img src="{{img.url}}" description="{{img.description}}">
 		<div class="cross" id={{img.id}} data="{{img.id}}" ng-click="removeImage(img.id)">
@@ -69,7 +69,7 @@
 					<div class="col-md-offset-1 col-md-5">
 						<div class="fileupload fileupload-new" data-provides="fileupload">
 							<span class="btn btn-primary btn-file"><span class="fileupload-new">Select file</span>
-							<span class="fileupload-exists">Change</span>         <input type="file" /></span>
+							<span class="fileupload-exists">Change</span>         <input type="file" id="fileFromCpt"/></span>
 							<span class="fileupload-preview"></span>
 							<a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
 						</div>
@@ -77,16 +77,16 @@
 					<div class="col-md-offset-1 col-md-5"> 
 						<div class="input-group">
 							<span class="input-group-addon" id="basic-addon1">URL</span>
-							<input type="text" class="form-control" placeholder="URL" aria-describedby="basic-addon1">
+							<input type="text" class="form-control" placeholder="URL" ng-model="fileFromURL" aria-describedby="basic-addon1">
 						</div>
 					</div>
 				</div>
 				<div class="margin-t-large"></div>
 				<div class="row">
-					<div class="col-md-offset-1 col-md-9">
+					<div class="col-md-offset-2 col-md-9">
 						<div class="input-group">
 							<span class="input-group-addon" id="basic-addon1">Description</span>
-							<input type="text" class="form-control" placeholder="Description" aria-describedby="basic-addon1">
+							<input type="text" class="form-control" placeholder="Description" ng-model="description" aria-describedby="basic-addon1">
 						</div>
 					</div>
 				</div>

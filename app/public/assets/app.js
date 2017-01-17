@@ -1,19 +1,10 @@
-var app = angular.module('galary',[]);
+var app = angular.module('gallery',[]);
 
-app.controller('gallaryController', ['$scope', function($scope){
-	$scope.data = [{
-		id : 12234,
-		url : './img/pallu.png',
-		description : 'pallu  tu toh h  pagal'
-	},{
-		id : 80853,
-		url : './img/vinaykipanti.png',
-		description : 'vinay toh gayo'
-	},{
-		id : 099809,
-		url : './img/recoverykeyapple.png',
-		description : 'apple ka page h bhai'
-	}];
+app.controller('galleryController', ['$scope', '$http', function($scope, $http){
+
+	var $ = angular.element;
+
+	$scope.data = [];
 
 
 	$scope.removeImage = function(id){
@@ -25,7 +16,33 @@ app.controller('gallaryController', ['$scope', function($scope){
 		}
 	}
 
+	$('#fileFromCpt').change(function(e){
+        $scope.fileFromCpt = e.target.files[0];
+    });
+	
 	$scope.uploadFile = function(){
-		console.log("working");
+		// console.log($scope.fileFromCpt);
+		// console.log($scope.fileFromURL);
+		// console.log($scope.description);
+
+		var fd = new FormData();
+
+		fd.append("file",$scope.fileFromCpt);
+
+		fd.append("description", $scope.description);
+
+		$http.post('http://localhost:3000/api/gallery',fd,{
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
+        })
+        .then(function(response){
+        	if(response.status === 200){
+        	   	$scope.data.push(response.data);
+        	}
+        	$('#uploadModal').modal('hide');
+        	$('#fileFromCpt').value = '';
+        	$scope.description = '';
+        });
+
 	}  
 }]);
