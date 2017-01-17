@@ -106,15 +106,15 @@
 		<div class="modal-content">
 			<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			<h4 class="modal-title" id="myModalLabel">Add Photo</h4>
+			<h4 class="modal-title" id="myModalLabel">Save Collection</h4>
 			</div>
 			<div class="modal-body">
 				<div class="row">
-					<div class="col-md-4">
-						<input type="file" name="image">
-					</div>
-					<div class="col-md-4">
-						<input type="text" name="">
+					<div class="col-md-offset-2 col-md-9">
+						<div class="input-group">
+							<span class="input-group-addon" id="basic-addon1">Collection Name</span>
+							<input type="text" class="form-control" placeholder="Collection Name" ng-model="description" aria-describedby="basic-addon1">
+						</div>
 					</div>
 				</div>
 			</div>
