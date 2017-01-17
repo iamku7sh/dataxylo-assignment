@@ -1,0 +1,45 @@
+.margin-t-large{
+	margin-top: 3rem;
+}
+
+.gallary{
+	width: 800px;
+	margin: 0 auto;
+}
+
+.photo-container{
+	width: 150px;
+	height: 120px;
+	position: relative;
+	float: left;
+	margin: 10px 20px;
+}
+
+.photo-container > div {
+	position: absolute;
+	top: 0;
+	left: 100%;
+	transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	display: none;
+}
+
+.photo-container:hover > div {
+	display: block;
+}
+.cross{
+	width: 15px;
+	height: 15px;
+}
+
+.photo-preview{
+	max-width: 150px;
+	max-height: 120px;
+}
+
+*{
+	box-sizing: border-box;
+	max-width: 100%;
+}
