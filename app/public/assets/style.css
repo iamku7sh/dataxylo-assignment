@@ -37,6 +37,8 @@
 .photo-preview{
 	max-width: 150px;
 	max-height: 120px;
+	float: left;
+	margin: 10px 25px;
 }
 
 *{

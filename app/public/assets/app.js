@@ -44,5 +44,36 @@ app.controller('galleryController', ['$scope', '$http', function($scope, $http){
         	$scope.description = '';
         });
 
-	}  
+	}
+
+	$scope.saveCollection = function(){
+		var params = { collectionName: $scope.collectionName, data: $scope.data};
+		params = angular.toJson(params);
+
+		var fd = new FormData();
+		fd.append("data", params);
+		
+		$http
+			.post('http://localhost:3000/api/collection',fd,{
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
+        })
+			.then(function(response){ });
+	}
+}]);
+
+
+app.controller("galleryCollectionController",['$scope', '$http', '$location' ,function($scope, $http, $location){
+	$scope.init = function(){
+		var collectionName = window.location.pathname.split('/')[1];
+		console.log(collectionName);
+		$http.get('http://localhost:3000/api/collection/'+collectionName)
+			.then(function(response){
+				if(response.status == 200){
+					$scope.data = response.data;
+				}
+			});
+	}
+
+
 }]);

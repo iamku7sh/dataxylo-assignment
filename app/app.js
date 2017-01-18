@@ -1,3 +1,5 @@
+require('./api/data/dbconnection.js').open();
+
 var express = require("express");
 var app = express();
 var path = require('path');
@@ -43,7 +45,11 @@ app.use('/api',routes);
 // 		.status(200)
 // 		.sendFile(path.join(__dirname, "public", "index.html"));
 // });
-
+app.get('/:galleryName',function(req,res){
+	res
+		.status(200)
+		.sendFile(path.join(__dirname,"public","showCollection.html"))
+})
 
 
 var server = app.listen(app.get('port'), function(){

@@ -113,14 +113,14 @@
 					<div class="col-md-offset-2 col-md-9">
 						<div class="input-group">
 							<span class="input-group-addon" id="basic-addon1">Collection Name</span>
-							<input type="text" class="form-control" placeholder="Collection Name" ng-model="description" aria-describedby="basic-addon1">
+							<input type="text" class="form-control" placeholder="Collection Name" ng-model="collectionName" aria-describedby="basic-addon1">
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="modal-footer">
 			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			<button type="button" class="btn btn-primary">Save changes</button>
+			<button type="button" class="btn btn-primary" ng-click="saveCollection()" >Save changes</button>
 			</div>
 		</div>
 	</div>
