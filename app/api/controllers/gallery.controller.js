@@ -16,9 +16,10 @@ module.exports.pictureUpload = function(req, res){
 
 	uploads.insertOne(data,function(err, response){
 
-		res
-			.status(201)
-			.json({id: id, url : url, description: description});
 	})
+
+	res
+		.status(201)
+		.json({id: id, url : url, description: description});
 
 }

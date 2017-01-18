@@ -28,7 +28,7 @@ app.controller('galleryController', ['$scope', '$http', function($scope, $http){
 		var fd = new FormData();
 
 		fd.append("file",$scope.fileFromCpt);
-
+		fd.append("url", $scope.fileFromURL);
 		fd.append("description", $scope.description);
 
 		$http.post('http://localhost:3000/api/gallery',fd,{
@@ -36,7 +36,7 @@ app.controller('galleryController', ['$scope', '$http', function($scope, $http){
             headers: {'Content-Type': undefined}
         })
         .then(function(response){
-        	if(response.status === 200){
+        	if(response.status === 201){
         	   	$scope.data.push(response.data);
         	}
         	$('#uploadModal').modal('hide');
@@ -55,10 +55,13 @@ app.controller('galleryController', ['$scope', '$http', function($scope, $http){
 		
 		$http
 			.post('http://localhost:3000/api/collection',fd,{
-            transformRequest: angular.identity,
-            headers: {'Content-Type': undefined}
-        })
-			.then(function(response){ });
+	            transformRequest: angular.identity,
+	            headers: {'Content-Type': undefined}
+        	})
+			.then(function(response){ 
+				$('#saveModal').modal('hide');
+	        	$scope.collectionName = '';
+			});
 	}
 }]);
 
