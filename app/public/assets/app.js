@@ -5,6 +5,7 @@ app.controller('galleryController', ['$scope', '$http', function($scope, $http){
 	var $ = angular.element;
 
 	$scope.data = [];
+	$scope.fileFromURL = '';
 
 
 	$scope.removeImage = function(id){
@@ -28,7 +29,7 @@ app.controller('galleryController', ['$scope', '$http', function($scope, $http){
 		var fd = new FormData();
 
 		fd.append("file",$scope.fileFromCpt);
-		fd.append("url", $scope.fileFromURL);
+		fd.append("url", $scope.fileFromURL ? $scope.fileFromURL : false);
 		fd.append("description", $scope.description);
 
 		$http.post('http://localhost:3000/api/gallery',fd,{
