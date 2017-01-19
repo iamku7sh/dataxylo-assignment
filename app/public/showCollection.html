@@ -19,14 +19,5 @@
 	<script type="text/javascript" src="./assets/fileupload.js"></script>
 	<script src="./assets/app.js"></script>
 </head>
-<body ng-controller="galleryCollectionController" ng-init="init()">
-	<!-- preview for photo's -->
-<div class="margin-t-large"></div>
-<div class="gallery">
-	<div class="photo-preview" ng-repeat='img in data | filter : searchKey'>
-		<img src="{{img.url}}" description="{{img.description}}">
-		<div>{{img.description}}</div>
-	</div>
-</div>
-</body>
+
 </html>

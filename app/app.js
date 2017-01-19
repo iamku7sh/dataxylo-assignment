@@ -48,7 +48,7 @@ app.use('/api',routes);
 app.get('/:galleryName',function(req,res){
 	res
 		.status(200)
-		.sendFile(path.join(__dirname,"public","showCollection.html"))
+		.sendFile(path.join(__dirname,"public","index.html"))
 })
 
 

@@ -1,4 +1,11 @@
-var app = angular.module('gallery',[]);
+var app = angular.module('gallery',['ngRoute']);
+
+
+app.controller('MainController', function($scope, $route, $routeParams, $location) {
+     $scope.$route = $route;
+     $scope.$location = $location;
+     $scope.$routeParams = $routeParams;
+ });
 
 app.controller('galleryController', ['$scope', '$http', function($scope, $http){
 
@@ -67,9 +74,10 @@ app.controller('galleryController', ['$scope', '$http', function($scope, $http){
 }]);
 
 
-app.controller("galleryCollectionController",['$scope', '$http', '$location' ,function($scope, $http, $location){
+app.controller("galleryCollectionController",['$scope', '$http', '$location', '$routeParams' ,function($scope, $http, $location, $routeParams){
 	$scope.init = function(){
-		var collectionName = window.location.pathname.split('/')[1];
+		console.log($routeParams);
+		var collectionName = $routeParams.collectionName;
 		console.log(collectionName);
 		$http.get('http://localhost:3000/api/collection/'+collectionName)
 			.then(function(response){
@@ -80,4 +88,16 @@ app.controller("galleryCollectionController",['$scope', '$http', '$location' ,fu
 	}
 
 
+}]);
+
+app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+	$routeProvider.
+	when('/', {templateUrl: 'partials/gallery.html',   controller: 'galleryController'}).
+	when('/:collectionName', {templateUrl: 'partials/collection.html', controller: 'galleryCollectionController'}).
+	otherwise({redirectTo: '/'});
+
+	$locationProvider.html5Mode({
+		enabled: true,
+		requireBase: false
+	});
 }]);
